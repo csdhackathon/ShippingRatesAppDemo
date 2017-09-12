@@ -1,4 +1,10 @@
-# ShippingRatesAppDemo
+![Pitney Bowes](https://github.com/csdhackathon/LocationAPIsApp/blob/master/PitneyBowes_Logo.jpg)
+
+# Pitney Bowes SMB Challenge 2017
+
+### Sample App showcasing consumption of [Pitney Bowes Shipping Rates APIs](http://www.pitneybowes.com/us/developer/shipping-apis.html)
+
+### For Changes in Project & Running
 1. Checkout the code
 2. Go to path *ShippingAPIDemo/app/build.gradle* and replace your own API Key & Secret 
 ```
