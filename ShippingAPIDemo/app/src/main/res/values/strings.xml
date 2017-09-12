@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Shipping API Demo</string>
+    <string name="msg_please_wait">Please Wait…</string>
+
+
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="address_line_3">Address Line 3</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="postalcode">Postal Code</string>
+    <string name="countrycode">Country Code</string>
+    <string name="name">Name</string>
+    <string name="company">Company</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+
+    <string name="button_submit">Submit</string>
+    <string name="button_next">Next</string>
+
+    <string name="error_missing_entry">Please provide all the details</string>
+
+    <string name="from_address">Sender Details:</string>
+    <string name="to_address">Receiver Details:</string>
+    <string name="parcel_details">Parcel Details:</string>
+    <string name="rates_details">Rate Details:</string>
+
+    <string name="label_shipping_detail">Shipping Details</string>
+
+    <string name="label_parcel_detail">Parcel Details</string>
+    <string name="label_rates_detail">Rates Details</string>
+
+    <string name="label_weight">Weight</string>
+    <string name="label_length">Length</string>
+    <string name="label_width">Width</string>
+    <string name="label_height">Height</string>
+    <string name="toast_no_data_available">No data available to display.</string>
+    <string name="title_country_list">Country List</string>
+    <string name="msg_getting_country_list">Getting country list.</string>
+    <string name="pitney_bowes_shipping_api_demo">Shipping API Demo</string>
+    <string name="get_country_list">Shipping Country List API</string>
+    <string name="use_rate_form">Shipment Rate API</string>
+
+    <string name="shipping_post_success">Shipping post Successful</string>
+    <string name="shipping_post_failed">Shipping post Failed</string>
+    <string name="label_chooser">Please select shipping API for demo.</string>
+    <string name="msg_connecting">Connecting…</string>
+</resources>
