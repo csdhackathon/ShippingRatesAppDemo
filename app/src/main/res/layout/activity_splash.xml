@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="pb.coe.pbhackathon.ui.activity.SplashActivity">
+
+    <TextView
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:text="@string/pitney_bowes_shipping_api_demo"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_centerInParent="true"
+        android:src="@drawable/pb_logo"
+        android:maxWidth="200dp"
+        android:maxHeight="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:layout_above="@+id/splashProgressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textSize="10sp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/splashProgressText"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/msg_connecting"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
