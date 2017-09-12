@@ -4,6 +4,7 @@ import pb.coe.pbhackathon.AppDelegate;
 import pb.coe.pbhackathon.manager.RateInputDataManager;
 import pb.coe.pbhackathon.rest.model.Events;
 import pb.coe.pbhackathon.rest.model.RequestBody;
+import pb.coe.pbhackathon.rest.model.ResponseViews;
 import retrofit2.Call;
 
 /**
@@ -11,9 +12,9 @@ import retrofit2.Call;
  * Post Shipping Rate API
  */
 
-public class PostShippingRateJob extends BaseRetrofitJob<Object> {
+public class PostShippingRateJob extends BaseRetrofitJob<ResponseViews.ShippingRateCardResponseView> {
     @Override
-    protected Call<Object> call() {
+    protected Call<ResponseViews.ShippingRateCardResponseView> call() {
         RequestBody.ShippingRateRequestView body = new RequestBody.ShippingRateRequestView();
         body.fromAddress = RateInputDataManager.getInstance().fromAddress;
         body.toAddress = RateInputDataManager.getInstance().toAddress;
@@ -23,13 +24,16 @@ public class PostShippingRateJob extends BaseRetrofitJob<Object> {
     }
 
     @Override
-    protected void onSuccess(Object response) {
-        RateInputDataManager.getInstance().reset();
-        AppDelegate.get().getEventBus().postSticky(new Events.PostShippingStickyEvent(true));
+    protected void onSuccess(ResponseViews.ShippingRateCardResponseView response) {
+        if(response.rates != null && response.rates.size() > 0) {
+            AppDelegate.get().getEventBus().postSticky(new Events.PostShippingStickyEvent(response.rates.get(0).getModel(), null));
+        } else {
+            AppDelegate.get().getEventBus().postSticky(new Events.PostShippingStickyEvent(null, null));
+        }
     }
 
     @Override
     protected void onFailure(String error) {
-        AppDelegate.get().getEventBus().postSticky(new Events.PostShippingStickyEvent(false));
+        AppDelegate.get().getEventBus().postSticky(new Events.PostShippingStickyEvent(null, error));
     }
 }

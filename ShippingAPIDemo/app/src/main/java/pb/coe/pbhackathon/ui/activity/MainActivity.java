@@ -19,12 +19,11 @@ import pb.coe.pbhackathon.utils.PBLogger;
 
 /**
  * Created by chetan on 11/09/17.
- * Main activity for Shipment Rate form
+ * Main activity for Shipment Rate form and result data.
  */
 public class MainActivity extends BaseAppCompatActivity {
     private static final PBLogger log = PBLogger.getPbLogger(MainActivity.class);
 
-    private Fragment fragment;
     private FragmentManager fragmentManager;
 
     @Override
@@ -34,7 +33,7 @@ public class MainActivity extends BaseAppCompatActivity {
 
         fragmentManager = getFragmentManager();
 
-        fragment = new AddressFormFragment();
+        Fragment fragment = new AddressFormFragment();
         Bundle bundle = new Bundle();
         bundle.putBoolean(AddressFormFragment.TYPE_FROM_ADDRESS, true);
         fragment.setArguments(bundle);
@@ -49,7 +48,7 @@ public class MainActivity extends BaseAppCompatActivity {
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEventFromAddressCollected(Events.FromAddressInformationCollectedEvent event) {
         event.removeSelf();
-        fragment = new AddressFormFragment();
+        Fragment fragment = new AddressFormFragment();
         Bundle bundle = new Bundle();
         bundle.putBoolean(AddressFormFragment.TYPE_FROM_ADDRESS, false);
         fragment.setArguments(bundle);
@@ -59,7 +58,7 @@ public class MainActivity extends BaseAppCompatActivity {
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEventToAddressCollected(Events.ToAddressInformationCollectedEvent event) {
         event.removeSelf();
-        fragment = new ParcelFormFragment();
+        Fragment fragment = new ParcelFormFragment();
         fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).addToBackStack(null).commit();
     }
 
@@ -81,10 +80,17 @@ public class MainActivity extends BaseAppCompatActivity {
         hideProgressDialog();
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); //remove all previous fragments
         if(event.isSuccess()) {
-            fragment = new ShippingRateFragment();
+            Fragment fragment = new ShippingRateFragment();
+            Bundle args = new Bundle();
+            args.putParcelable(ShippingRateFragment.ARGS_RATE_MODEL, event.getModel());
+            fragment.setArguments(args);
             fragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
         } else {
-            showLongToast(getString(R.string.shipping_post_failed));
+            if(event.getError() == null) {
+                showLongToast(getString(R.string.shipping_post_failed));
+            } else {
+                showLongToast(event.getError());
+            }
             RateInputDataManager.getInstance().reset();
             finish();
         }

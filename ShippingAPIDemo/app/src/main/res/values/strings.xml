@@ -45,4 +45,11 @@
     <string name="shipping_post_failed">Shipping post Failed</string>
     <string name="label_chooser">Please select shipping API for demo.</string>
     <string name="msg_connecting">Connecting…</string>
+    <string name="rate_detail_lable_base_charge">Base Charge</string>
+    <string name="rate_detail_lable_total_carrier_charge">Total Carrier Charge</string>
+    <string name="rate_detail_lable_alt_base_charge">Alternate Base Charge</string>
+    <string name="rate_detail_lable_detination_zone">Destination Zone</string>
+    <string name="rate_detail_lable_alt_total_charge">Alternate Total Charge</string>
+    <string name="rate_detail_lable_carrier">Carrier</string>
+    <string name="rate_detail_lable_parcel_type">Parcel Type</string>
 </resources>

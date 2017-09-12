@@ -3,6 +3,9 @@ package pb.coe.pbhackathon.rest.job;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import okhttp3.ResponseBody;
 import pb.coe.pbhackathon.AppDelegate;
 import pb.coe.pbhackathon.rest.model.Events;
@@ -40,7 +43,15 @@ public abstract class BaseRetrofitJob<T> extends Job {
             } else {
                 ResponseBody err = response.errorBody();
                 if(err != null) {
-                    onFailure(err.string());
+                    //try getting first error detail
+                    try {
+                        String errorDetail = err.string();
+                        JSONArray errorJsonArr = new JSONArray(errorDetail);
+                        String message = errorJsonArr.getJSONObject(0).getString("message");
+                        onFailure(message);
+                    } catch (Exception ignore) {
+                        onFailure("Failure: response code " + response.code() + ", message: " + response.message());
+                    }
                 } else {
                     onFailure("Failure: response code " + response.code() + ", message: " + response.message());
                 }

@@ -1,9 +1,11 @@
 package pb.coe.pbhackathon.rest.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pb.coe.pbhackathon.AppDelegate;
 import pb.coe.pbhackathon.model.CountryDetailModel;
+import pb.coe.pbhackathon.model.ShippingRateDetailModel;
 
 /**
  * Created by chetan on 11/09/17.
@@ -40,14 +42,25 @@ public final class Events {
     }
 
     public static class PostShippingStickyEvent extends BaseStickyEvent {
-        private boolean success;
 
-        public PostShippingStickyEvent(boolean success) {
-            this.success = success;
+        private ShippingRateDetailModel model;
+        private String error;
+
+        public PostShippingStickyEvent(ShippingRateDetailModel model, String error) {
+            this.model = model;
+            this.error = error;
         }
 
         public boolean isSuccess() {
-            return success;
+            return model != null;
+        }
+
+        public ShippingRateDetailModel getModel() {
+            return model;
+        }
+
+        public String getError() {
+            return error;
         }
     }
 

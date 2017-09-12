@@ -2,6 +2,10 @@ package pb.coe.pbhackathon.rest.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
+import pb.coe.pbhackathon.model.ShippingRateDetailModel;
+
 /**
  * Created by chetan on 11/09/17.
  * Basic Response Views for REST communication
@@ -26,4 +30,34 @@ public class ResponseViews {
         public String countryCode;
         public String countryName;
     }
+
+    public static class ShippingRateCardResponseView {
+        /*We can add all other fields/views, but currently we are showing few details for demo*/
+        public List<ShippingRateCardDetailView> rates;
+
+        public static class ShippingRateCardDetailView {
+            public String carrier;
+            public String parcelType;
+
+            public String baseCharge;
+            public String totalCarrierCharge;
+            public String alternateBaseCharge;
+            public String destinationZone;
+            public String alternateTotalCharge;
+
+            public ShippingRateDetailModel getModel() {
+                ShippingRateDetailModel model = new ShippingRateDetailModel();
+                model.carrier = carrier;
+                model.parcelType = parcelType;
+                model.baseCharge = baseCharge;
+                model.totalCarrierCharge = totalCarrierCharge;
+                model.alternateBaseCharge = alternateBaseCharge;
+                model.destinationZone = destinationZone;
+                model.alternateTotalCharge = alternateTotalCharge;
+                return model;
+
+            }
+        }
+    }
+
 }
