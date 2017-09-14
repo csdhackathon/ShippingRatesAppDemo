@@ -18,8 +18,8 @@ android {
 
         //Provide below information, check https://developerportal.pitneybowes.com for more details
         //TODO Framework: Change Api Key and Secret
-        buildConfigField "String", "APP_KEY", "\"CVltGGCCHHxk45y7kyUHrr9XW4oqRhFj\""
-        buildConfigField "String", "SECRET", "\"3igVuo7rtrKK0reh\""
+        buildConfigField "String", "APP_KEY", "\"SOME_API_KEY\""
+        buildConfigField "String", "SECRET", "\"SOME_SECRET\""
     }
     buildTypes {
         debug {
