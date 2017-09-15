@@ -3,6 +3,7 @@ package pb.coe.pbhackathon.ui.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -17,6 +18,7 @@ import pb.coe.pbhackathon.ui.adapter.CountryListAdapter;
 
 public class ListActivity extends BaseAppCompatActivity {
 
+    private static final int COL_NUM = 3;
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
     private CountryListAdapter adapter;
 
@@ -27,7 +29,7 @@ public class ListActivity extends BaseAppCompatActivity {
         setContentView(R.layout.activity_list);
         ButterKnife.bind(this);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(COL_NUM, StaggeredGridLayoutManager.VERTICAL));
         adapter = new CountryListAdapter(null);
         recyclerView.setAdapter(adapter);
 
