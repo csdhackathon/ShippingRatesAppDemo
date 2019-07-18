@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Base64;
 
 import java.io.IOException;
-import java.util.logging.Level;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -61,6 +61,8 @@ public class RestFactory {
 
         //Auth Token Client
         OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .readTimeout(120,TimeUnit.SECONDS)
                 .addInterceptor(logging)
                 .addInterceptor(new Interceptor() {
                     @Override

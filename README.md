@@ -1,17 +1,15 @@
-![Pitney Bowes](https://github.com/csdhackathon/LocationAPIsApp/blob/master/PitneyBowes_Logo.jpg)
-
-# Pitney Bowes SMB Challenge 2017
+![Pitney Bowes](https://github.com/csdhackathon/IdentifyAddressDemo/blob/master/PitneyBowes_Logo.jpg)
 
 ### Sample App showcasing consumption of [Pitney Bowes Shipping Rates APIs](http://www.pitneybowes.com/us/developer/shipping-apis.html)
 
 ### For Changes in Project & Running
 1. Checkout the code
-2. Go to path *ShippingAPIDemo/app/build.gradle* and replace your own API Key & Secret 
+2. Go to path *ShippingAPIDemo/app/build.gradle* and replace your own API Key & Secret
 ```
     buildConfigField "String", "APP_KEY", "\"SOME_API_KEY\""
     buildConfigField "String", "SECRET", "\"SOME_SECRET\""
 ```
-3. In case you want to switch server from sandbox then in same file mentioned above you will need to change - 
+3. In case you want to switch server from sandbox then in same file mentioned above you will need to change -
 
 ```
     buildConfigField "String", "BASE_URL", "\"https://api-sandbox.pitneybowes.com/\""
@@ -28,3 +26,4 @@ Replace **https://api-sandbox.pitneybowes.com/** with desired server base path. 
 
 7. Now you can select API demo and also you check the logs for REST APIs.
 
+Note: Android Studio 3.4.1+ suggested.

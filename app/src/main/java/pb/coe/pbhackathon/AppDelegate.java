@@ -27,7 +27,7 @@ public class AppDelegate {
 
     private AppDelegate() {}
 
-    public void init(Application app) {
+    void init(Application app) {
         _initRestFactory(app);
         _buildJobManager(app);
         _buildEventBus(app);
